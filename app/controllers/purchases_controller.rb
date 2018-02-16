@@ -13,8 +13,7 @@ class PurchasesController < ApplicationController
   def create
     @purchase = Purchase.new(purchase_params)
     @purchase.user_id = current_user.id
-    
- 
+
     if @purchase.save
       redirect_to purchases_path, notice: 'Your order was successfully placed.'
     else
