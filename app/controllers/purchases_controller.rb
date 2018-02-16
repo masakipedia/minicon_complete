@@ -14,6 +14,7 @@ class PurchasesController < ApplicationController
     @purchase = Purchase.new(purchase_params)
     @purchase.user_id = current_user.id
     
+ 
     if @purchase.save
       redirect_to purchases_path, notice: 'Your order was successfully placed.'
     else
@@ -31,4 +32,5 @@ class PurchasesController < ApplicationController
     def purchase_params
       params.require(:purchase).permit(:event_id, :ticket_quantity, :total_price)
     end
+    
 end

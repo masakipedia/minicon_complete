@@ -10,4 +10,19 @@ class Event < ApplicationRecord
   validates_each :start_at do |record, attr, value|
     record.errors.add(attr, 'must be at least a week from now') if value < Time.current + 1.week
   end
+  
+  def create_plan
+    require "stripe"
+    
+    Stripe::Plan.create(
+      :amount => 5000,
+      :interval => "month",
+      :product => {
+        :name => "Quartz enterprise"
+      },
+      :currency => "jpy",
+      :id => "quartz-enterprise"
+    )
+  end
+
 end

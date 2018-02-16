@@ -22,6 +22,19 @@ class Admin::EventsController < Admin::BaseController
   # POST /admin/events
   def create
     @event = Event.new(event_params)
+
+    
+    require "stripe"
+    
+    Stripe::Plan.create(
+      :amount => @event.ticket_price,
+      :interval => "month",
+      :product => {
+        :name => @event.title
+      },
+      :currency => "jpy",
+      :id => params[:title]
+    )
     
     if @event.save
       redirect_to admin_event_path(@event), notice: 'Event was successfully created.'

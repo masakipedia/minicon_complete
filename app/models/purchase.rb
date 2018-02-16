@@ -12,4 +12,5 @@ class Purchase < ApplicationRecord
     active_purchases = Purchase.complete.joins(:event).where(events: { id: event.id })
     errors.add(:base, 'This event is sold out.') if active_purchases.count + ticket_quantity > event.ticket_quantity
   end
+
 end
