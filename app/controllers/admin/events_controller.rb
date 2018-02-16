@@ -33,7 +33,7 @@ class Admin::EventsController < Admin::BaseController
         :name => @event.title
       },
       :currency => "jpy",
-      :id => params[:title]
+      :id => params[:event_id]
     )
     
     if @event.save

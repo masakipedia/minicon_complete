@@ -13,6 +13,20 @@ class PurchasesController < ApplicationController
   def create
     @purchase = Purchase.new(purchase_params)
     @purchase.user_id = current_user.id
+    
+    require "stripe"
+    
+    customer = Stripe::Customer.create(
+      :email => params[:stripeEmail],
+      :source  => params[:stripeToken]
+    )
+  
+    charge = Stripe::Charge.create(
+      :customer    => customer.id,
+      :amount      => params[:purchase][:total_price], 
+      :description => 'Rails Stripe customer',
+      :currency    => 'jpy'
+    )
 
     if @purchase.save
       redirect_to purchases_path, notice: 'Your order was successfully placed.'
