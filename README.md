@@ -1,24 +1,8 @@
-# README
+# Event EC Site
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### 実装内容
 
-Things you may want to cover:
+- クレジットカード決済
 
-* Ruby version
+![demo](https://user-images.githubusercontent.com/32217053/36545231-cd400cfe-182b-11e8-8124-92104eb737d1.gif)
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
